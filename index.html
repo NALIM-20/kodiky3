@@ -1,14 +1,37 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>TOTO je title</title>
-        <script type="text/javascript">
-            console.log("lalalala")
-        </script>
-    </head>
+<head>
+    <title>Booze API</title>
+</head>
 
-    <body>
-        <h1>ahoj html</h1>
-        <p>tu je text</p>
+<body>
 
-    </body>
+<h1>Drinks z API</h1>
+
+<div id="images"></div>
+
+<script>
+
+fetch("https://api.sampleapis.com/beers/ale")
+.then(response => response.json())
+.then(data => {
+
+    const container = document.getElementById("images")
+
+    data.slice(0,5).forEach(drink => {
+
+        const img = document.createElement("img")
+
+        img.src = drink.image
+        img.width = 150
+
+        container.appendChild(img)
+
+    })
+
+})
+
+</script>
+
+</body>
 </html>
